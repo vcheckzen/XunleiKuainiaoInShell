@@ -9,7 +9,7 @@ phash="$data_dir/hash"
 cookies="$data_dir/cookies"
 
 
-# 小米账号和密码
+# Mi Account
 user="XXXXXXXXXXX"
 passwd="XXXXXXXXXXX"
 
