@@ -54,7 +54,7 @@ chmod 777 kuainiao.sh
 The code below will enable kuainiao.sh to run one time in an hour, note that `certain_directory` should be replaced.
 
 ```bash
-crontab -l > tmp && echo "1 * * * * /certain_directory/kuainiao.sh" >> tmp && crontab tmp && rm -f tmp
+crontab -l > tmp && echo "1 * * * * /certain_directory/kuainiao/kuainiao.sh" >> tmp && crontab tmp && rm -f tmp
 ```
 
 ### Run the Code According to WAN IP Change
@@ -85,5 +85,5 @@ Save the code above to maintain.sh and move it to the same directory of kuainiao
 
 ```bash
 chmod 777 maintain.sh
-crontab -l > tmp && echo "* * * * * /home/root/kuainiao/maintain.sh" >> tmp && crontab tmp && rm -f tmp
+crontab -l > tmp && echo "* * * * * /certain_directory/kuainiao/maintain.sh" >> tmp && crontab tmp && rm -f tmp
 ```
