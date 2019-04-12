@@ -1,7 +1,8 @@
 # XunleiKuainiaoInShell
 
 ## Introduction
-A Shell Implementation of Kuainiao, Xunlei.
+
+A shell implementation of kuainiao, xunlei, which can be used in almost all linux platform.
 
 ## How to Use
 
