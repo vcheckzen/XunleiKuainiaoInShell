@@ -50,7 +50,7 @@ chmod 777 kuainiao.sh
 
 ### Set kuainiao.sh As a Cron Job
 
-The code below will enable kuainiao.sh to run one time in an hour, but the best way is to run it on IP change, your can implement it by yourself.
+The code below will enable kuainiao.sh to run one time in an hour, note that `certain_directory` should be replaced. In addition, the best way is to run the code on IP change, your can implement it by yourself
 
 ```bash
 crontab -l > tmp && echo "1 * * * * /certain_directory/kuainiao.sh" >> conf && crontab tmp && rm -f tmp
