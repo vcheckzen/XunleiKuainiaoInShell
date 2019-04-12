@@ -84,5 +84,6 @@ fi
 Save the code above to maintain.sh and move it to the same directory of kuainiao.sh. Then, Add it to Cron.
 
 ```bash
-chmod 777 maintain.sh && crontab -l > conf && echo "* * * * * /home/root/kuainiao/maintain.sh" >> conf && crontab conf && rm -f conf
+chmod 777 maintain.sh
+crontab -l > conf && echo "* * * * * /home/root/kuainiao/maintain.sh" >> conf && crontab conf && rm -f conf
 ```
