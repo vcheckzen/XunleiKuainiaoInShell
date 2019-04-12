@@ -17,13 +17,13 @@ If you've installed git, then
 git clone https://github.com/vcheckzen/XunleiKuainiaoInShell.git
 cd XunleiKuainiaoInShell
 ```
-
 Or
 
 ```bash
-wget https://github.com/vcheckzen/XunleiKuainiaoInShell/archive/master.zip
-unzip master.zip
-cd master
+wget https://github.com/vcheckzen/XunleiKuainiaoInShell/archive/v1.0.tar.gz
+tar -zxvf v1.0.tar.gz
+rm -f v1.0.tar.gz
+cd XunleiKuainiaoInShell-1.0
 ```
 
 ### Edit the Code, Add Your Mi Account
@@ -31,7 +31,7 @@ cd master
 Change `XXXXXXXXXXX` with your mi account username and password at line 13, 14 in `kuainiao.sh`
 
 ```bash
-# line 13 and  14 of kuainiao.sh
+# line 13 and 14 of kuainiao.sh
 user="XXXXXXXXXXX"
 passwd="XXXXXXXXXXX"
 ```
