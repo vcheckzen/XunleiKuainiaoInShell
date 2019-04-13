@@ -87,3 +87,8 @@ Save the code above to `maintain.sh` and move it to the same directory of `kuain
 chmod 777 maintain.sh
 crontab -l > tmp && echo "* * * * * /certain_directory/kuainiao/maintain.sh" >> tmp && crontab tmp && rm -f tmp
 ```
+
+# References
+
+- [Xunlei-Fastdick](https://github.com/fffonion/Xunlei-Fastdick)
+- [luci-app-xlnetacc](https://github.com/sensec/luci-app-xlnetacc)
