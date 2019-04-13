@@ -37,7 +37,7 @@ user="XXXXXXXXXXX"
 passwd="XXXXXXXXXXX"
 ```
 
-### Run kuaniao.sh to Test
+### Run `kuainiao.sh` to Test
 
 ```bash
 chmod 777 kuainiao.sh
@@ -49,7 +49,7 @@ chmod 777 kuainiao.sh
 ./kuainiao.sh 0
 ```
 
-### Set kuainiao.sh As a Cron Job
+### Set `kuainiao.sh` As a Cron Job
 
 The code below will enable `kuainiao.sh` to run one time in an hour, noting that `certain_directory` should be replaced.
 
