@@ -12,19 +12,11 @@ Because the code is using mi account to authorize xunlei, you should bind them f
 
 ### Download the Code
 
-If you've installed git, then
+Assuming you've installed git, then
 
 ```bash
 git clone https://github.com/vcheckzen/XunleiKuainiaoInShell.git
 cd XunleiKuainiaoInShell
-```
-Or
-
-```bash
-wget https://github.com/vcheckzen/XunleiKuainiaoInShell/archive/v1.1.tar.gz
-tar -zxvf v1.1.tar.gz
-rm -f v1.1.tar.gz
-cd XunleiKuainiaoInShell-1.1
 ```
 
 ### Edit the Code, Add Your Mi Account
