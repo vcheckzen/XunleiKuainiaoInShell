@@ -5,7 +5,6 @@ source "$base_dir/browser.sh"
 data_dir="$base_dir/data"
 [ ! -d "$data_dir" ] && mkdir -p "$data_dir"
 mi="$data_dir/mi"
-phash="$data_dir/hash"
 cookies="$data_dir/cookies"
 
 
@@ -28,12 +27,7 @@ callback=callback=`urlencode "$callback"`
 
 mi_auth="https://account.xiaomi.com/pass/serviceLoginAuth2"
 user="user=$user"
-if [ ! -f "$phash" ]; then
-    hash="hash=`echo -n $passwd | md5sum | awk '{print $1}' | tr 'a-z' 'A-Z'`"
-    echo "$hash" > "$phash"
-else
-    hash=`cat "$phash"`
-fi
+hash="hash=`echo -n $passwd | md5sum | awk '{print $1}' | tr 'a-z' 'A-Z'`"
 xunlei_auth=`post "$mi_auth" "$user&$hash&$sid&$callback&$qs&$_sign" | grep -Eo "http.+'" | sed "s/'//"`
 saveCookies "$xunlei_auth" "$cookies"
 sessionid=sessionid=`cat "$cookies" | grep -Eo "ws.+"`
@@ -60,7 +54,7 @@ if [ "$result" = "" ]; then
     if [ "$peerid" != "peerid=" ]; then
         method="recover"
         result=`get "$kuainiao_transfer$method?$host&$port&$user_type&$dial_account&$peerid&$sessionid&$userid&$client_type" | grep -Eo "bandwidth"`
-        [ "$action" = "upgrade" ] && result=`get "$kuainiao_transfer$action?$host&$port&$user_type&$dial_account&$peerid&$sessionid&$userid&$client_type" | grep -Eo "bandwidth"`
+        [ "$action" = "upgrade" ] && peerid=peerid="5c6b3947-b48c-43ea-b821-72fa73e3e186" && result=`get "$kuainiao_transfer$action?$host&$port&$user_type&$dial_account&$peerid&$sessionid&$userid&$client_type" | grep -Eo "bandwidth"`
     fi
 fi
 [ "$result" != "" ] && echo "Action $action succeeded!" || echo "Action $action failed!"
