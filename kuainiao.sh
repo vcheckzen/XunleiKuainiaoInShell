@@ -51,9 +51,16 @@ kuainiao_speeder=`get "$kuainiao_transfer$method?$host&$port&$user_type&$dial_ac
 host=host=`echo "$kuainiao_speeder" | grep -Eo "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}"`
 port=port=`echo "$kuainiao_speeder" | grep -Eo "[0-9]+" | tail -1`
 dial_account=dial_account=`get "${kuainiao_transfer}bandwidth?$host&$port&$peerid&$sessionid&$userid&$client_type" | grep -Eo "\"dial_account.+[0-9]+\"" | grep -Eo "[0-9]+"`
-method="keepalive"
-peerid=peerid=`get "$kuainiao_transfer$method?$host&$port&$user_type&$dial_account&$peerid&$sessionid&$userid&$client_type" | grep -Eo "[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}"`
-[ "$peerid" = "peerid=" ] && peerid=peerid="5c6b3947-b48c-43ea-b821-72fa73e3e186"
-method="upgrade"
-[ "$1" = "0" ] && method="recover"
-get "$kuainiao_transfer$method?$host&$port&$user_type&$dial_account&$peerid&$sessionid&$userid&$client_type"
+action="upgrade"
+[ "$1" = "0" ] && action="recover"
+result=`get "$kuainiao_transfer$action?$host&$port&$user_type&$dial_account&$peerid&$sessionid&$userid&$client_type" | grep -Eo "bandwidth"`
+if [ "$result" = "" ]; then
+    method="keepalive"
+    peerid=peerid=`get "$kuainiao_transfer$method?$host&$port&$user_type&$dial_account&$peerid&$sessionid&$userid&$client_type" | grep -Eo "[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}"`
+    [ "$peerid" = "peerid=" ] && peerid=peerid="5c6b3947-b48c-43ea-b821-72fa73e3e186"
+    echo $peerid
+    method="recover"
+    result=`get "$kuainiao_transfer$method?$host&$port&$user_type&$dial_account&$peerid&$sessionid&$userid&$client_type" | grep -Eo "bandwidth"`
+    [ "$action" = "upgrade" ] && result=`get "$kuainiao_transfer$action?$host&$port&$user_type&$dial_account&$peerid&$sessionid&$userid&$client_type" | grep -Eo "bandwidth"`
+fi
+[ "$result" != "" ] && echo "Action $action succeeded!" || echo "Action $action failed!"
