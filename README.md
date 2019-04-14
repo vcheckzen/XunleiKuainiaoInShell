@@ -76,7 +76,6 @@ kuainiao="$base_dir/kuainiao.sh"
 old_ip="`cat $old_ip_file`"
 new_ip="`ifconfig "$wan_interface" | grep -Eo "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}" | head -1`"
 if [ "$old_ip" != "$new_ip" ]; then
-    "$kuainiao 0"
     "$kuainiao"
     echo "$new_ip" > "$old_ip_file"
 fi
