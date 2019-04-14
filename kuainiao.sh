@@ -39,16 +39,21 @@ saveCookies "$xunlei_auth" "$cookies"
 sessionid=sessionid=`cat "$cookies" | grep -Eo "ws.+"`
 userid=userid=`cat "$cookies" | grep userid | grep -Eo "[0-9]+" | tail -1`
 user_type=user_type="1"
-peerid=peerid="5c6b3947-b48c-43ea-b821-72fa73e3e186"
 client_type=client_type="guanwang-huodongweb-1.0"
+peerid=peerid="5c6b3947-b48c-43ea-b821-72fa73e3e186"
 
-
-xunlei_portal="http://api.portal.swjsq.vip.xunlei.com:81/v2/queryportal"
-kuainiao_speeder=`get "$xunlei_portal"`
+kuainiao_transfer="https://xlkn-ssl.xunlei.com/"
+method="queryportal"
+host=host="api.portal.swjsq.vip.xunlei.com"
+port=port="81"
+kuainiao_speeder=`get "$kuainiao_transfer$method?$host&$port&$user_type&$dial_account&$peerid&$sessionid&$userid&$client_type"`
 host=host=`echo "$kuainiao_speeder" | grep -Eo "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}"`
 port=port=`echo "$kuainiao_speeder" | grep -Eo "[0-9]+" | tail -1`
-kuainiao_transfer="https://xlkn-ssl.xunlei.com/"
 dial_account=dial_account=`get "${kuainiao_transfer}bandwidth?$host&$port&$peerid&$sessionid&$userid&$client_type" | grep -Eo "\"dial_account.+[0-9]+\"" | grep -Eo "[0-9]+"`
+method="keepalive"
+peerid=peerid=`get "$kuainiao_transfer$method?$host&$port&$user_type&$dial_account&$peerid&$sessionid&$userid&$client_type" | grep -Eo "[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}"`
+[ "$peerid" = "peerid=" ] && peerid=peerid="5c6b3947-b48c-43ea-b821-72fa73e3e186"
 method="upgrade"
 [ "$1" = "0" ] && method="recover"
 get "$kuainiao_transfer$method?$host&$port&$user_type&$dial_account&$peerid&$sessionid&$userid&$client_type"
+
