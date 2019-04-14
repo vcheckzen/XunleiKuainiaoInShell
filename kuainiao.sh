@@ -42,6 +42,7 @@ user_type=user_type="1"
 client_type=client_type="guanwang-huodongweb-1.0"
 peerid=peerid="5c6b3947-b48c-43ea-b821-72fa73e3e186"
 
+
 kuainiao_transfer="https://xlkn-ssl.xunlei.com/"
 method="queryportal"
 host=host="api.portal.swjsq.vip.xunlei.com"
@@ -56,4 +57,3 @@ peerid=peerid=`get "$kuainiao_transfer$method?$host&$port&$user_type&$dial_accou
 method="upgrade"
 [ "$1" = "0" ] && method="recover"
 get "$kuainiao_transfer$method?$host&$port&$user_type&$dial_account&$peerid&$sessionid&$userid&$client_type"
-

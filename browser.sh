@@ -1,14 +1,14 @@
 #!/bin/bash
 
 HEADER="User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36"
-CON_TIME="15"
-TRANS_TIME="15"
+CONNECTION_TIME="15"
+TRANSMISSION_TIME="15"
 
 get() {
     URL="$1"
     curl -s \
-    --connect-timeout "$CON_TIME" \
-    -m "$TRANS_TIME" \
+    --connect-timeout "$CONNECTION_TIME" \
+    -m "$TRANSMISSION_TIME" \
     -H "'$HEADER'" \
     "$URL"
 }
@@ -16,8 +16,8 @@ get() {
 getFollowRedirect() {
     URL="$1"
     curl -s \
-    --connect-timeout "$CON_TIME" \
-    -m "$TRANS_TIME" \
+    --connect-timeout "$CONNECTION_TIME" \
+    -m "$TRANSMISSION_TIME" \
     -H "$HEADER" \
     -L "$URL"
 }
@@ -38,8 +38,8 @@ saveCookies() {
     URL="$1"
     OUTPUT="$2"
     curl -s \
-    --connect-timeout "$CON_TIME" \
-    -m "$TRANS_TIME" \
+    --connect-timeout "$CONNECTION_TIME" \
+    -m "$TRANSMISSION_TIME" \
     -H "'$HEADER'" \
     -c "$OUTPUT" "$URL"
 }
