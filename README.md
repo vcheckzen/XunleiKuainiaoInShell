@@ -21,10 +21,10 @@ cd XunleiKuainiaoInShell
 Or
 
 ```bash
-wget https://github.com/vcheckzen/XunleiKuainiaoInShell/archive/v1.0.tar.gz
-tar -zxvf v1.0.tar.gz
-rm -f v1.0.tar.gz
-cd XunleiKuainiaoInShell-1.0
+wget https://github.com/vcheckzen/XunleiKuainiaoInShell/archive/v1.1.tar.gz
+tar -zxvf v1.1.tar.gz
+rm -f v1.1.tar.gz
+cd XunleiKuainiaoInShell-1.1
 ```
 
 ### Edit the Code, Add Your Mi Account
