@@ -37,7 +37,7 @@ user="XXXXXXXXXXX"
 passwd="XXXXXXXXXXX"
 ```
 
-### Run kuaniao.sh to Test
+### Run `kuainiao.sh` to Test
 
 ```bash
 chmod +x kuainiao.sh
