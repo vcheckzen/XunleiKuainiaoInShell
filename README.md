@@ -32,7 +32,7 @@ cd XunleiKuainiaoInShell-1.0
 Change `XXXXXXXXXXX` with your mi account username and password at line 13, 14 in `kuainiao.sh`.
 
 ```bash
-# line 13 and 14 of kuainiao.sh
+# line 13 and 14 of `kuainiao.sh`
 user="XXXXXXXXXXX"
 passwd="XXXXXXXXXXX"
 ```
@@ -40,7 +40,7 @@ passwd="XXXXXXXXXXX"
 ### Run kuaniao.sh to Test
 
 ```bash
-chmod 777 kuainiao.sh
+chmod +x kuainiao.sh
 
 # speed up
 ./kuainiao.sh
@@ -49,7 +49,7 @@ chmod 777 kuainiao.sh
 ./kuainiao.sh 0
 ```
 
-### Set kuainiao.sh As a Cron Job
+### Set `kuainiao.sh` As a Cron Job
 
 The code below will enable `kuainiao.sh` to run one time in an hour, noting that `certain_directory` should be replaced.
 
@@ -76,6 +76,7 @@ kuainiao="$base_dir/kuainiao.sh"
 old_ip="`cat $old_ip_file`"
 new_ip="`ifconfig "$wan_interface" | grep -Eo "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}" | head -1`"
 if [ "$old_ip" != "$new_ip" ]; then
+    "$kuainiao 0"
     "$kuainiao"
     echo "$new_ip" > "$old_ip_file"
 fi
@@ -84,7 +85,7 @@ fi
 Save the code above to `maintain.sh` and move it to the same directory of `kuainiao.sh`. Then, Add it to Cron.
 
 ```bash
-chmod 777 maintain.sh
+chmod +x maintain.sh
 crontab -l > tmp && echo "* * * * * /certain_directory/kuainiao/maintain.sh" >> tmp && crontab tmp && rm -f tmp
 ```
 
