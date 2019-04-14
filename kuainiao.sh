@@ -57,10 +57,10 @@ result=`get "$kuainiao_transfer$action?$host&$port&$user_type&$dial_account&$pee
 if [ "$result" = "" ]; then
     method="keepalive"
     peerid=peerid=`get "$kuainiao_transfer$method?$host&$port&$user_type&$dial_account&$peerid&$sessionid&$userid&$client_type" | grep -Eo "[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}"`
-    [ "$peerid" = "peerid=" ] && peerid=peerid="5c6b3947-b48c-43ea-b821-72fa73e3e186"
-    echo $peerid
-    method="recover"
-    result=`get "$kuainiao_transfer$method?$host&$port&$user_type&$dial_account&$peerid&$sessionid&$userid&$client_type" | grep -Eo "bandwidth"`
-    [ "$action" = "upgrade" ] && result=`get "$kuainiao_transfer$action?$host&$port&$user_type&$dial_account&$peerid&$sessionid&$userid&$client_type" | grep -Eo "bandwidth"`
+    if [ "$peerid" != "peerid=" ]; then
+        method="recover"
+        result=`get "$kuainiao_transfer$method?$host&$port&$user_type&$dial_account&$peerid&$sessionid&$userid&$client_type" | grep -Eo "bandwidth"`
+        [ "$action" = "upgrade" ] && result=`get "$kuainiao_transfer$action?$host&$port&$user_type&$dial_account&$peerid&$sessionid&$userid&$client_type" | grep -Eo "bandwidth"`
+    fi
 fi
 [ "$result" != "" ] && echo "Action $action succeeded!" || echo "Action $action failed!"
