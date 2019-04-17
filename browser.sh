@@ -25,7 +25,6 @@ getFollowRedirect() {
 post() {
     URL="$1"
     PAYLOAD="$2"
-    echo "$PAYLOAD"
     wget --quiet \
     --header "'$HEADER'" \
     --method POST \
