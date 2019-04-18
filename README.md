@@ -32,6 +32,9 @@ passwd="XXXXXXXXXXX"
 ### Run `kuainiao.sh` to Test
 
 ```bash
+# requirements on OpenWrt, Padavan and other RouterOS
+opkg update && opkg install curl wget openssl-util coreutils-nohup ca-certificates ca-bundle
+
 chmod +x kuainiao.sh browser.sh
 
 # speed up
