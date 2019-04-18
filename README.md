@@ -32,7 +32,7 @@ passwd="XXXXXXXXXXX"
 ### Run `kuainiao.sh` to Test
 
 ```bash
-chmod +x kuainiao.sh
+chmod +x kuainiao.sh browser.sh
 
 # speed up
 ./kuainiao.sh
