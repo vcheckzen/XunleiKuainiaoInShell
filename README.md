@@ -2,7 +2,7 @@
 
 ## Introduction
 
-A shell implementation of kuainiao, xunlei, which means it runs properly on almost all linux platform.
+A shell implementation of kuainiao, xunlei, runs properly on almost all linux platform.
 
 ## How to Use
 
