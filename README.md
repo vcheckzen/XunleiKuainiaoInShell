@@ -43,7 +43,7 @@ chmod +x kuainiao.sh browser.sh
 # revocer
 ./kuainiao.sh 0
 
-# entware or optware environment must specific bash interpreter, cause the bash directory could be /opt/bin/bash, not /bin/bash
+# you may need specify bash interpreter on entware or optware environment , cause the bash directory could be /opt/bin/bash, not /bin/bash
 bash kuainiao.sh
 bash kuainiao.sh 0
 ```
