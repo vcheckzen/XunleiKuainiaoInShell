@@ -32,7 +32,7 @@ passwd="XXXXXXXXXXX"
 ### Run `kuainiao.sh` to Test
 
 ```bash
-# requirements on OpenWrt, Padavan and other RouterOS base on entware or optware environment
+# requirements on OpenWrt, Padavan and other RouterOS based on entware or optware environment
 opkg update && opkg install libcurl libopenssl bash curl wget openssl-util ca-certificates ca-bundle
 
 chmod +x kuainiao.sh browser.sh
