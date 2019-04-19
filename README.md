@@ -32,8 +32,8 @@ passwd="XXXXXXXXXXX"
 ### Run `kuainiao.sh` to Test
 
 ```bash
-# requirements on OpenWrt, Padavan and other RouterOS
-opkg update && opkg install libopenssl openssl-util ca-certificates ca-bundle bash curl wget
+# requirements on OpenWrt, Padavan and other RouterOS base on entware or optware environment
+opkg update && opkg install libcurl libopenssl bash curl wget openssl-util ca-certificates ca-bundle
 
 chmod +x kuainiao.sh browser.sh
 
@@ -42,6 +42,10 @@ chmod +x kuainiao.sh browser.sh
 
 # revocer
 ./kuainiao.sh 0
+
+# entware or optware environment must specific bash entware, cause the bash directory could be /opt/bin/bash, not /bin/bash
+bash kuainiao.sh
+bash kuainiao.sh 0
 ```
 
 ### Set `kuainiao.sh` As a Cron Job
