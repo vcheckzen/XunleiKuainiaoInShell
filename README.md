@@ -33,7 +33,7 @@ passwd="XXXXXXXXXXX"
 
 ```bash
 # requirements on OpenWrt, Padavan and other RouterOS
-opkg update && opkg install curl wget openssl-util ca-certificates ca-bundle
+opkg update && opkg install bash curl wget openssl-util ca-certificates ca-bundle
 
 chmod +x kuainiao.sh browser.sh
 
