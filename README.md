@@ -24,7 +24,7 @@ cd XunleiKuainiaoInShell
 Change `XXXXXXXXXXX` with your mi account username and password in `kuainiao.sh`.
 
 ```bash
-# line 8 and 9 of `kuainiao.sh`
+# line 8 and 9 of kuainiao.sh
 user="XXXXXXXXXXX"
 passwd="XXXXXXXXXXX"
 ```
