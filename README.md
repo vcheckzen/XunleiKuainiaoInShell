@@ -24,23 +24,31 @@ cd XunleiKuainiaoInShell
 Change `XXXXXXXXXXX` with your mi account username and password in `kuainiao.sh`.
 
 ```bash
-# line 8 and 9 of kuainiao.sh
+# Line 8 and 9 of kuainiao.sh
 user="XXXXXXXXXXX"
 passwd="XXXXXXXXXXX"
+```
+
+### Install Requirements and Test Environment
+
+```bash
+# Requirements on OpenWRT, Padavan and other RouterOS based on entware or optware environment
+opkg update && opkg install libreadline libcurl libopenssl bash curl wget openssl-util ca-certificates ca-bundle
+
+# Normal output: "ip":"121.226.150.154"
+curl -s https://ipconfig.io/json | grep -Eo "\"ip\":\"[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\""
+wget -qO- https://ipconfig.io/json | grep -Eo "\"ip\":\"[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\""
 ```
 
 ### Run `kuainiao.sh` to Test
 
 ```bash
-# requirements on OpenWrt, Padavan and other RouterOS based on entware or optware environment
-opkg update && opkg install libreadline libcurl libopenssl bash curl wget openssl-util ca-certificates ca-bundle
-
 chmod +x kuainiao.sh browser.sh
 
-# speed up
+# Speed up
 ./kuainiao.sh
 
-# revocer
+# Revocer
 ./kuainiao.sh 0
 ```
 
