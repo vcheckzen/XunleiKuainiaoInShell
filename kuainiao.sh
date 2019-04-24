@@ -2,10 +2,6 @@
 
 base_dir=`dirname $0`
 source "$base_dir/browser.sh"
-data_dir="$base_dir/data"
-[ ! -d "$data_dir" ] && mkdir -p "$data_dir"
-mi="$data_dir/mi"
-cookies="$data_dir/cookies"
 
 
 # Mi Account
@@ -15,11 +11,11 @@ passwd="XXXXXXXXXXX"
 
 xunlei_mi_auth="https://open-api-auth.xunlei.com/platform?m=BindOauth"
 mi_oauth=`get "$xunlei_mi_auth" | grep -Eo "http.+[0-9]"`
-getFollowRedirect "$mi_oauth" > "$mi"
+mi=`getFollowRedirect "$mi_oauth"`
 sid="sid=oauth2.0"
-callback=`cat "$mi" | grep -Eo "callback:.+oauth2.0\"" | grep -Eo "http.+oauth2.0"`
-qs=`cat "$mi" | grep -Eo "qs:.+\"" | grep -Eo "\".+\"" | sed 's/\"//g'`
-_sign=`cat "$mi" | grep -Eo "\"_sign.+\"" | grep -Eo "\"[^_:].+\"" | sed 's/\"//g'`
+callback=`echo "$mi" | grep -Eo "callback:.+oauth2.0\"" | grep -Eo "http.+oauth2.0"`
+qs=`echo "$mi" | grep -Eo "qs:.+\"" | grep -Eo "\".+\"" | sed 's/\"//g'`
+_sign=`echo "$mi" | grep -Eo "\"_sign.+\"" | grep -Eo "\"[^_:].+\"" | sed 's/\"//g'`
 qs=qs=`urlencode "$qs"`
 _sign=_sign=`urlencode "$_sign"`
 callback=callback=`urlencode "$callback"`
@@ -29,9 +25,9 @@ mi_auth="https://account.xiaomi.com/pass/serviceLoginAuth2"
 user="user=$user"
 hash="hash=`echo -n $passwd | md5sum | awk '{print $1}' | tr 'a-z' 'A-Z'`"
 xunlei_auth=`post "$mi_auth" "$user&$hash&$sid&$callback&$qs&$_sign" | grep -Eo "http.+'" | sed "s/'//"`
-saveCookies "$xunlei_auth" "$cookies"
-sessionid=sessionid=`cat "$cookies" | grep -Eo "ws.+"`
-userid=userid=`cat "$cookies" | grep userid | grep -Eo "[0-9]+" | tail -1`
+cookies=`getCookies "$xunlei_auth"`
+sessionid=sessionid=`echo "$cookies" | grep -Eo "ws.+"`
+userid=userid=`echo "$cookies" | grep userid | grep -Eo "[0-9]+" | tail -1`
 user_type=user_type="1"
 client_type=client_type="guanwang-huodongweb-1.0"
 peerid=peerid="5c6b3947-b48c-43ea-b821-72fa73e3e186"

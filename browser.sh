@@ -33,14 +33,13 @@ post() {
     - "$URL"
 }
 
-saveCookies() {
+getCookies() {
     URL="$1"
-    OUTPUT="$2"
     curl -s \
     --connect-timeout "$CONNECTION_TIME" \
     -m "$TRANSMISSION_TIME" \
     -H "'$HEADER'" \
-    -c "$OUTPUT" "$URL"
+    -c- "$URL"
 }
 
 urlencode() {
