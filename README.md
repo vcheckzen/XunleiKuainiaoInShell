@@ -21,10 +21,10 @@ cd XunleiKuainiaoInShell
 
 ### Edit the Code, Add Your Mi Account
 
-Change `XXXXXXXXXXX` with your mi account username and password at line 13, 14 in `kuainiao.sh`.
+Change `XXXXXXXXXXX` with your mi account username and password in `kuainiao.sh`.
 
 ```bash
-# line 13 and 14 of `kuainiao.sh`
+# line 8 and 9 of `kuainiao.sh`
 user="XXXXXXXXXXX"
 passwd="XXXXXXXXXXX"
 ```
